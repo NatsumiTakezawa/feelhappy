@@ -1,0 +1,21 @@
+/* src/pages/LandingPage.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  section {
+    padding: 20px;
+  }
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
