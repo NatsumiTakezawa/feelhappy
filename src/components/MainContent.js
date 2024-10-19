@@ -1,5 +1,7 @@
 // src/components/MainContent.js
 import React from 'react';
+import EstimateCalculator from '../components/EstimateCalculator';
+
 
 const MainContent = () => {
   return (
@@ -22,12 +24,12 @@ const MainContent = () => {
         <p>いただけますので是非ご活用くださいませ</p>
 
         <h1>加工サイズ</h1>
-        <p>【MAX42cm以内】</p>
-        <p>長辺</p><input type="number" /><p>cm</p>
-        <p>【MAX29.7cm以内】</p>
-        <p>短辺</p><input type="number" /><p>cm</p>
-        <p>※数値を入力する際は半角でご入力ください</p>
-        <p>※加工面積310.8cm²までは一律5000円となります</p>
+
+          <div className="container mx-auto p-4">
+            <EstimateCalculator />
+          </div>
+
+
 
         <h1>イラスト追加</h1><p>※濃淡のあるデザイン不可</p>
         <p>【MAX42cm以内】</p>
@@ -77,3 +79,5 @@ const MainContent = () => {
 };
 
 export default MainContent;
+
+
