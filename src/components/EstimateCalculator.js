@@ -13,6 +13,11 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { jsPDF } from 'jspdf';
+import '../App.css';
+import '../ipaexm-normal.js';
+
+
+
 
 // 加工面積の入力値を格納する状態を初期化する
 const EstimateCalculator = () => {
@@ -153,6 +158,8 @@ if (!calculatedErrors.illustrationLength && !calculatedErrors.illustrationWidth 
 if (fontChange) basePrice += 1000;
 if (materialChange) basePrice += 2000;
 
+
+// エラーオブジェクトに何か入っていれば、エラーをsetし、空の場合は合計金額をsetする
 if (Object.keys(calculatedErrors).length > 0) {
   setErrors(calculatedErrors);
   return;
@@ -172,10 +179,25 @@ setter(formattedValue);
 
 // PDF生成
 const generatePDF = () => {
-  const doc = new jsPDF();
+const doc = new jsPDF();
+
+
+// Font
+// useEffect(() => {
+
+//   pdfRef.current.setFont('ipaexm'); 
+
+// }, []);
+
+
+
+// doc.addFileToVFS("IBMPlexSansJP-Regular.ttf", font);
+// doc.addFont("NotoSerifJP-Regular.ttf");
+  doc.setFont("ipaexm");
+
   
   // PDFのスタイル設定
-  doc.setFont('helvetica');
+  // doc.setFont('NotoSerifJP');
   doc.setFontSize(20);
   doc.text('見積書', 105, 20, { align: 'center' });
   
@@ -201,12 +223,12 @@ const generatePDF = () => {
 
 
   return (
-    <Card className="w-full max-w-md mx-auto p-6">
-      <CardHeader className="text-2xl font-bold text-center">
+    <div className="w-full max-w-md mx-auto p-6">
+      <header>
         加工サイズ
-      </CardHeader>
+      </header>
       <div>※数値は半角でご入力ください</div>
-      <CardContent className="space-y-4">
+      <div className="space-y-4">
         <div>
           <div>【MAX 42cm】</div>
           <Label htmlFor="length">長辺 </Label>
@@ -239,40 +261,49 @@ const generatePDF = () => {
         </div>
 
       <div className="mb-2">料金体系:</div>
-        <ul className="list-disc ml-4">
-          <li>310.8cm²まで: ¥5,000（一律）</li>
-          <li>以降100cm²ごとに: ¥1,000追加</li>
-          <li>最大サイズ: 1,247.4cm²</li>
-        </ul>
+      <ul className="list-disc ml-4">
+        <li>310.8cm²まで: ¥5,000（一律）</li>
+        <li>以降100cm²ごとに: ¥1,000追加</li>
+        <li>最大サイズ: 1,247.4cm²</li>
+      </ul>
+
       <div>
-
         <h1>イラスト追加</h1>
-        <div>
-          <Label htmlFor="length">長辺 </Label>
-          <input
-            type="number"
-            value={illustrationLength}
-            onChange={(e) => handleInputChange(setIllustrationLength, e.target.value)}
-            placeholder="長辺を入力"
-            className="mt-1"
-          />(cm)
-        </div>
-        {errors.illustrationLength &&  <p style={{ color: 'red' }}>{errors.illustrationLength}</p>}
+          <p>※数値を入力する際は半角でご入力ください</p>
+          <p>※濃淡のあるデザイン不可</p>
+          <div>
+            <Label htmlFor="illustrationLength">長辺 </Label>
+            <input
+              type="number"
+              value={illustrationLength}
+              onChange={(e) => handleInputChange(setIllustrationLength, e.target.value)}
+              placeholder="長辺を入力"
+              className="mt-1"
+            />(cm)
+          </div>
+          {errors.illustrationLength &&  <p style={{ color: 'red' }}>{errors.illustrationLength}</p>}
 
-        <div>
-          <Label htmlFor="width">短辺 </Label>
-          <input
-            type="number"
-            value={illustrationWidth}
-            onChange={(e) => handleInputChange(setIllustrationWidth, e.target.value)}
-            placeholder="短辺を入力"
-            className="mt-1"
-          />(cm)
-        </div>
-        {errors.illustrationWidth && <p style={{ color: 'red' }}>{errors.illustrationWidth}</p>}
-        {errors.illustrationgeneral && <p style={{ color: 'red' }}>{errors.illustrationgeneral}</p>}
-        {errors.illustration && <p style={{ color: 'red' }}>{errors.illustration}</p>}
+          <div>
+            <Label htmlFor="illustrationWidth">短辺 </Label>
+            <input
+              type="number"
+              value={illustrationWidth}
+              onChange={(e) => handleInputChange(setIllustrationWidth, e.target.value)}
+              placeholder="短辺を入力"
+              className="mt-1"
+            />(cm)
+          </div>
+          {errors.illustrationWidth && <p style={{ color: 'red' }}>{errors.illustrationWidth}</p>}
+          {errors.illustrationgeneral && <p style={{ color: 'red' }}>{errors.illustrationgeneral}</p>}
+          {errors.illustration && <p style={{ color: 'red' }}>{errors.illustration}</p>}
 
+          <p>※イラストが複数、もしくは広範囲に及ぶものは、
+          模様の端から端までを測って数値をご入力ください</p>
+
+          <p>例１</p><p>模様が複数存在</p>
+          <img src="./exm1.svg"></img>
+          <p>例２</p><p>模様が広範囲に及ぶ</p>
+          <img src="./exm2.svg"></img>
       </div>
 
 
@@ -285,6 +316,7 @@ const generatePDF = () => {
             />
           フォント変更 +1000円
         </label>
+        <p>※1フォント毎の料金です</p>
       </div>
       <div>
         <label>
@@ -295,6 +327,12 @@ const generatePDF = () => {
           />
           素材変更 +2000円
         </label>
+          <p>透明アクリル</p>
+          <p>乳白色アクリル</p>
+          <p>ホワイトアクリル</p>
+          <p>ブラックアクリル</p>         
+          <p>ゴールドアクリル</p>
+          <p>シルバーアクリル</p>
       </div>
 
 
@@ -302,9 +340,8 @@ const generatePDF = () => {
 
 
         <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-
           <div className="text-xl mt-2">
-          {price > 0 && <h3>見積もり価格: {price}円</h3>}
+          {price > 0 && <h3>合計金額: {price}円</h3>}
           </div>
         </div>
 
@@ -316,11 +353,8 @@ const generatePDF = () => {
             見積書をPDF出力
           </Button>
         
-      </CardContent>
-
-      <CardFooter className="text-sm text-gray-500 flex-col items-start">
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 

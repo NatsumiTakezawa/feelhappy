@@ -1,0 +1,3 @@
+// .eslintignore ファイルを作成
+*-normal.js
+*.font.js
