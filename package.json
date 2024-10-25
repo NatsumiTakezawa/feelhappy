@@ -20,6 +20,7 @@
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "react-to-pdf": "^1.0.1",
+    "swiper": "^11.1.14",
     "tailwind-merge": "^2.5.4",
     "web-vitals": "^2.1.4"
   },
@@ -33,7 +34,10 @@
       "react-app",
       "react-app/jest"
     ],
-    "ignorePatterns": ["*-normal.js", "*.font.js"]
+    "ignorePatterns": [
+      "*-normal.js",
+      "*.font.js"
+    ]
   },
   "browserslist": {
     "production": [

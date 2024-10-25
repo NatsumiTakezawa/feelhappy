@@ -1,16 +1,7 @@
 // src/components/EstimateCalculator.js
-import React, { useState, useEffect } from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import React, { useState, useEffect, useRef} from 'react';
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { jsPDF } from 'jspdf';
 import '../App.css';
@@ -32,9 +23,13 @@ const EstimateCalculator = () => {
   const [materialChange, setMaterialChange] = useState(false);
 
   const [price, setPrice] = useState(0);
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState({});
 
-  });
+
+
+   
+
+
 
 
     // 制限値の定数
@@ -169,6 +164,11 @@ if (Object.keys(calculatedErrors).length > 0) {
 }
 };
 
+
+
+
+
+
 // 入力フィールドの値を制御
 const handleInputChange = (setter, value) => {
 const formattedValue = value === '' || /^\d*\.?\d{0,1}$/.test(value) ? value : value ;
@@ -177,49 +177,37 @@ setter(formattedValue);
 
 
 
+
 // PDF生成
 const generatePDF = () => {
-const doc = new jsPDF();
-
-
-// Font
-// useEffect(() => {
-
-//   pdfRef.current.setFont('ipaexm'); 
-
-// }, []);
-
-
-
-// doc.addFileToVFS("IBMPlexSansJP-Regular.ttf", font);
-// doc.addFont("NotoSerifJP-Regular.ttf");
-  doc.setFont("ipaexm");
-
+  const doc = new jsPDF();
   
-  // PDFのスタイル設定
-  // doc.setFont('NotoSerifJP');
-  doc.setFontSize(20);
-  doc.text('見積書', 105, 20, { align: 'center' });
-  
-  doc.setFontSize(12);
-  const today = new Date().toLocaleDateString('ja-JP');
-  doc.text(`発行日: ${today}`, 20, 40);
-  
-  // 見積内容
-  doc.setFontSize(14);
-  doc.text('【見積内容】', 20, 60);
-  doc.setFontSize(12);
-  doc.text(`サイズ: ${length}cm × ${width}cm`, 30, 75);
-  doc.text(`金額: ¥${price.toLocaleString()}`, 30, 95);
-  
-  // 注意事項
-  doc.setFontSize(10);
-  doc.text('※ 310.8cm²までは一律5,000円', 20, 120);
-  doc.text('※ 100cm²ごとに1,000円追加', 20, 130);
-  
-  // PDF保存
-  doc.save('見積書.pdf');
-};
+    
+    // PDFのスタイル設定
+    doc.setFont("ipaexm");
+    doc.setFontSize(20);
+    doc.text('見積書', 105, 20, { align: 'center' });
+    
+    doc.setFontSize(12);
+    const today = new Date().toLocaleDateString('ja-JP');
+    doc.text(`発行日: ${today}`, 20, 40);
+    
+    // 見積内容
+    doc.setFontSize(14);
+    doc.text('【見積内容】', 20, 60);
+    doc.setFontSize(12);
+    doc.text(`サイズ: ${length}cm × ${width}cm`, 30, 75);
+    doc.text(`金額: ¥${price.toLocaleString()}`, 30, 95);
+    
+    // 注意事項
+    doc.setFontSize(10);
+    doc.text('※ 310.8cm²までは一律5,000円', 20, 120);
+    doc.text('※ 100cm²ごとに1,000円追加', 20, 130);
+    
+    // PDF保存
+    doc.save('見積書.pdf');
+  };
+
 
 
   return (

@@ -1,13 +1,65 @@
 // src/components/MainContent.js
 import React from 'react';
 import EstimateCalculator from '../components/EstimateCalculator';
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import '../App.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+
+
+
 
 
 const MainContent = () => {
+  const images =[
+    '/header1.jpeg',
+    '/header2.jpeg'
+  ];
+
   return (
     <section>
-      <img src="./header1.jpeg" alt="スライド画像"></img>
-      <img src="./header2.jpeg" alt="スライド画像"></img>
+
+    <Swiper
+      // install Swiper modules
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={50}
+      slidesPerView={1}
+      centeredSlides={true}
+      navigation
+      pagination={{ clickable: true }}
+      loop= {true} // ループさせる
+      speed={1500} // 少しゆっくり(デフォルトは300)
+      autoplay= {{ // 自動再生
+        delay:1500, // 1.5秒後に次のスライド
+        disableOnInteraction:false
+      }} // 矢印をクリックしても自動再生を止めない
+      className="w-full h-[400px]" // スワイパーのサイズを指定
+      breakpoints={{
+        // レスポンシブ設定
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 30
+        },
+        1024: {
+          slidesPerView: 1,
+          spaceBetween: 50
+        }
+      }}
+    >
+      <SwiperSlide><img id="target" src="./header1.jpeg" alt="スライド画像"></img></SwiperSlide>
+      <SwiperSlide><img id="target" src="./header2.jpeg" alt="スライド画像"></img></SwiperSlide>
+    
+    </Swiper>
+
       <p>-シンプルモダン好きな方へ贈る
         ワンランク上の名入れアイテム-</p>
         <h1>Customize option</h1>
@@ -27,6 +79,7 @@ const MainContent = () => {
           <div className="container mx-auto p-4">
             <EstimateCalculator />
           </div>
+
 
 
           <a href="https://www.instagram.com/feel_happy2/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
