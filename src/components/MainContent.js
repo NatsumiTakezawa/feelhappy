@@ -3,63 +3,63 @@ import React from 'react';
 import EstimateCalculator from '../components/EstimateCalculator';
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import '../App.css';
+import { Autoplay, EffectFade,Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-
-
+import 'swiper/css/effect-fade'; // フェード効果用のCSSを追加
+import 'swiper/css/autoplay';
 
 
 
 const MainContent = () => {
-  const images =[
-    '/header1.jpeg',
-    '/header2.jpeg'
-  ];
+  
+  const swiperParams = {
+    modules: [Autoplay, EffectFade, Navigation, Pagination],
+    effect: "fade",
+    navigation: true,
+    pagination: { clickable: true },
+    loop: true,
+    speed: 1500,
+    autoplay: {
+      delay: 1500,
+      disableOnInteraction: false
+    }
+  };
 
   return (
-    <section>
-
-    <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={50}
-      slidesPerView={1}
-      centeredSlides={true}
-      navigation
-      pagination={{ clickable: true }}
-      loop= {true} // ループさせる
-      speed={1500} // 少しゆっくり(デフォルトは300)
-      autoplay= {{ // 自動再生
-        delay:1500, // 1.5秒後に次のスライド
-        disableOnInteraction:false
-      }} // 矢印をクリックしても自動再生を止めない
-      className="w-full h-[400px]" // スワイパーのサイズを指定
-      breakpoints={{
-        // レスポンシブ設定
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 20
-        },
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 30
-        },
-        1024: {
-          slidesPerView: 1,
-          spaceBetween: 50
-        }
-      }}
-    >
-      <SwiperSlide><img id="target" src="./header1.jpeg" alt="スライド画像"></img></SwiperSlide>
-      <SwiperSlide><img id="target" src="./header2.jpeg" alt="スライド画像"></img></SwiperSlide>
-    
-    </Swiper>
-
+    <div style={{
+      backgroundImage: "url('/background.jpg')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      minHeight: '100vh',
+      width:'100%',
+      backgroundRepeat:'',
+    }}>
+    <section className="w-full max-w-6xl mx-auto px-4 py-8">
+      <Swiper {...swiperParams} className="h-[400px]">
+        <SwiperSlide>
+          <div className="w-full h-full">
+            <img
+              src="/header1.jpeg"
+              alt="スライド1"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full h-full">
+            <img
+              src="/header2.jpeg"
+              alt="スライド2"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </SwiperSlide>
+      </Swiper>
+   
+   
       <p>-シンプルモダン好きな方へ贈る
         ワンランク上の名入れアイテム-</p>
         <h1>Customize option</h1>
@@ -95,7 +95,7 @@ const MainContent = () => {
 
 
     </section>
-    
+    </div>
   );
 };
 

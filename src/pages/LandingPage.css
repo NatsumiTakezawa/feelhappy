@@ -5,17 +5,52 @@ body {
     font-family: Arial, sans-serif;
   }
   header {
-    background-color: #333;
-    color: white;
     padding: 10px;
   }
   section {
     padding: 20px;
   }
   footer {
-    background-color: #333;
-    color: white;
     text-align: center;
     padding: 10px;
   }
   
+  
+  /* ホームトップSwiperコンテナのスタイル */
+
+#swiper {
+  width: 100%;
+  height: 590px;
+  max-width: 100%;
+  margin: 0 auto 0;
+  margin-top: 77px;
+}
+
+#swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像をコンテナのサイズに合わせてトリミング */
+}
+
+/* スワイパーのスライドスタイル */
+
+
+/* スワイパーのナビゲーションボタン（オプション） */
+#swiper .swiper-button-next,
+#swiper .swiper-button-prev {
+  color: #fff !important; /* ナビゲーションボタンの色 */
+  --swiper-navigation-size:20px !important;
+  bottom: 400px !important;
+  opacity: 0;
+}
+
+/* スワイパーのページネーション（オプション） */
+#swiper .swiper-pagination {
+  --swiper-theme-color: #fff !important; /* ページネーションの色 */
+  bottom: 21px !important;
+} 
+
+
+#swiper .swiper-pagination-active {
+  opacity: 1;
+}
