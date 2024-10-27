@@ -4,7 +4,9 @@ import React from 'react';
 const Header = () => {
   return (
     <header>
-      <h1>Feel Happy</h1>
+      <div className='header_logo'>
+        <p>Feel Happy</p>
+      </div>
     </header>
   );
 };

@@ -5,11 +5,13 @@ import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-      </Routes>
-    </Router>
+    <div style={{ backgroundImage: "url(/background.jpg)" }}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

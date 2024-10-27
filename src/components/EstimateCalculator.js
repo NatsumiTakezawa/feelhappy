@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { jsPDF } from 'jspdf';
-import '../App.css';
+// import '../App.css';
 import '../ipaexm-normal.js';
 
 

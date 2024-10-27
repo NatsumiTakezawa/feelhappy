@@ -3,9 +3,8 @@ import React from 'react';
 import EstimateCalculator from '../components/EstimateCalculator';
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade,Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Autoplay, EffectFade, Pagination} from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade'; // フェード効果用のCSSを追加
@@ -13,12 +12,12 @@ import 'swiper/css/autoplay';
 
 
 
+
 const MainContent = () => {
   
   const swiperParams = {
-    modules: [Autoplay, EffectFade, Navigation, Pagination],
+    modules: [Autoplay, EffectFade,  Pagination],
     effect: "fade",
-    navigation: true,
     pagination: { clickable: true },
     loop: true,
     speed: 1500,
@@ -29,14 +28,7 @@ const MainContent = () => {
   };
 
   return (
-    <div style={{
-      backgroundImage: "url('/background.jpg')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      minHeight: '100vh',
-      width:'100%',
-      backgroundRepeat:'',
-    }}>
+
     <section className="w-full max-w-6xl mx-auto px-4 py-8">
       <Swiper {...swiperParams} className="h-[400px]">
         <SwiperSlide>
@@ -57,12 +49,26 @@ const MainContent = () => {
             />
           </div>
         </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full h-full">
+            <img
+              src="/header3.jpeg"
+              alt="スライド3"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </SwiperSlide>
       </Swiper>
    
    
       <p>-シンプルモダン好きな方へ贈る
         ワンランク上の名入れアイテム-</p>
-        <h1>Customize option</h1>
+        <img
+            src="/customizeoption.svg"
+            alt="customize option"
+            className="customize_image"
+          />
+          
         <p>お見積もりシュミレーター</p>
         <p>当shopではお客様に寄り添った作品作りに努めています</p>
         <p>名入れアイテムは全て文言変更可能でございます</p>
@@ -95,7 +101,6 @@ const MainContent = () => {
 
 
     </section>
-    </div>
   );
 };
 
