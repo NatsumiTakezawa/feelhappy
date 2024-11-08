@@ -29,32 +29,32 @@ const MainContent = () => {
 
   return (
 
-    <section className="w-full max-w-6xl mx-auto px-4 py-8">
-      <Swiper {...swiperParams} className="h-[400px]">
+    <section className="">
+      <Swiper {...swiperParams} className="">
         <SwiperSlide>
-          <div className="w-full h-full">
+          <div className="">
             <img
               src="/header1.jpeg"
               alt="スライド1"
-              className="w-full h-full object-cover"
+              className=""
             />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full h-full">
+          <div className="">
             <img
               src="/header2.jpeg"
               alt="スライド2"
-              className="w-full h-full object-cover"
+              className=""
             />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-full h-full">
+          <div className="">
             <img
               src="/header3.jpeg"
               alt="スライド3"
-              className="w-full h-full object-cover"
+              className=""
             />
           </div>
         </SwiperSlide>
@@ -68,7 +68,7 @@ const MainContent = () => {
             alt="customize option"
             className="customize_image"
           />
-          
+
         <p>お見積もりシュミレーター</p>
         <p>当shopではお客様に寄り添った作品作りに努めています</p>
         <p>名入れアイテムは全て文言変更可能でございます</p>
@@ -82,7 +82,7 @@ const MainContent = () => {
         <p>いただけますので是非ご活用くださいませ</p>
 
 
-          <div className="container mx-auto p-4">
+          <div className="">
             <EstimateCalculator />
           </div>
 
