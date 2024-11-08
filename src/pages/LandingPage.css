@@ -19,7 +19,7 @@ body {
     font-family: "Libre Baskerville", serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 23px;
+    font-size: 20px;
     letter-spacing: 4px;
     text-align: center;
     margin: 1%;
@@ -28,48 +28,96 @@ body {
 
 
 
-  footer {
-    text-align: center;
-    padding: 10px;
-  }
 
 
   
   /* ホームトップSwiperコンテナのスタイル */
 
-#swiper {
+.swiper {
   width: 100%;
-  height: 590px;
+  height: auto;
   max-width: 100%;
-  margin: 0 auto 0;
-  margin-top: 77px;
 }
 
-#swiper .swiper-slide img {
+.swiper .swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* 画像をコンテナのサイズに合わせてトリミング */
 }
 
-/* スワイパーのスライドスタイル */
 
-
-/* スワイパーのナビゲーションボタン（オプション） */
-#swiper .swiper-button-next,
-#swiper .swiper-button-prev {
-  color: #fff !important; /* ナビゲーションボタンの色 */
-  --swiper-navigation-size:20px !important;
-  bottom: 400px !important;
-  opacity: 0;
-}
 
 /* スワイパーのページネーション（オプション） */
-#swiper .swiper-pagination {
-  --swiper-theme-color: #fff !important; /* ページネーションの色 */
+.swiper-pagination {
+  --swiper-theme-color: #877366ff !important; /* ページネーションの色 */
   bottom: 21px !important;
 } 
 
 
-#swiper .swiper-pagination-active {
+.swiper-pagination-active {
   opacity: 1;
+}
+
+
+/*フェードインフェードアウト*/
+[data-aos="fade-in"] {
+  transition-property: opacity, transform;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.title{
+  position: absolute;
+  margin-top: -17vw;
+  z-index: 1;
+  padding: 0.5em 1em;
+  color: #2c2c2f;
+  background: #fff;/*背景色*/
+  opacity: 0.8;
+  width: 62%;
+  font-size: 3vw;
+}
+
+
+.customizeoption{
+  display: flex;
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center;     /* 垂直方向の中央揃え */
+  margin-top: 10%;
+}
+
+.customizeoption img{
+  width: 41vw;
+}
+
+.simulate_title{
+  display: flex;
+  justify-content: center;
+}
+
+.simulate_title p{
+  font-size: 4vw;
+}
+
+.information{
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center;     /* 垂直方向の中央揃え */
+  margin: 10%;
+  text-align: center;
+  font-size: 3vw;
+  line-height: 1.6em
+}
+
+.estimate_section{
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center;
+  margin: 10%;
+}
+
+
+footer {
+  text-align: center;
+  padding: 10px;
 }
