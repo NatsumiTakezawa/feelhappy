@@ -20,7 +20,7 @@ body {
     font-weight: 400;
     font-style: italic;
     font-size: 20px;
-    letter-spacing: 4px;
+    letter-spacing: 0.2em;
     text-align: center;
     margin: 1%;
     }
@@ -35,6 +35,9 @@ body {
       height: 100vh;
       background: #f6f2f1ff;
       z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     
     .start p {
@@ -44,11 +47,10 @@ body {
       font-family: "Libre Baskerville", serif;
       font-weight: 400;
       font-style: italic;
-      font-size: 20px;
-      letter-spacing: 4px;
+      font-size: 5vw;
+      letter-spacing: 0.2em;
       text-align: center;
       margin: 1%;
-      justify-content: center;
     }
     
     .start p.visible {
@@ -63,9 +65,19 @@ body {
     
     .start.hidden {
       opacity: 0;
+      transition: opacity 1s;
     }
 
-
+    .ml12 {
+      /* font-weight: 200;
+      font-size: 1.8em;
+      letter-spacing: 0.5em; */
+    }
+    
+    .ml12 .letter {
+      display: inline-block;
+      line-height: 1em;
+    }
 
   
   /* ホームトップSwiperコンテナのスタイル */
