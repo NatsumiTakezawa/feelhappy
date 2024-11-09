@@ -36,11 +36,19 @@ const MainContent = () => {
  
   useEffect(() => {
     AOS.init({
-      duration: 2000,
-      once: true,
-      disable: false, // デフォルトではデバイスサイズによりdisableされるため、falseにする
+      duration: 2000,          // アニメーションの時間
+      offset: 200,             // 要素が表示される位置のオフセット
+      once: true,             // falseにすることで、スクロールするたびにアニメーションする
+      anchorPlacement: 'top-bottom', // 要素の上端が画面の下端に来たときにアニメーション開始
+      easing: 'ease-out',      // イージング
+      mirror: false, 
     });
-  }, []);
+
+      // スクロールイベントでAOSを更新
+      window.addEventListener('scroll', () => {
+        AOS.refresh();
+      });
+    }, []);
 
 
   return (
@@ -81,23 +89,25 @@ const MainContent = () => {
       </Swiper>
     
    
-    <div className="title" data-aos="fade-left" data-aos-once="true">
-      <p>-シンプルモダン好きな方へ贈る
-      <br></br>
-      　　ワンランク上の名入れアイテム-</p>
+    <div className="title_first" data-aos="fade-left" data-aos-delay="500">
+      <p>-シンプルモダン好きな方へ贈る</p>
     </div>
-    <div className="customizeoption" data-aos="fade-up" data-aos-once="true">
+    <div className="title_second" data-aos="fade-left" data-aos-delay="1000">
+      <p>　　ワンランク上の名入れアイテム-</p>
+    </div>
+
+    <div className="customizeoption" data-aos="fade-up" data-aos-delay="500" >
       <img
         src="/customizeoption.svg"
         alt="customize option"
         className="customize_image"
       />
     </div>
-    <div  className="simulate_title" data-aos="fade-up">
+    <div  className="simulate_title" data-aos="fade-up" data-aos-delay="1000">
       <p>お見積もりシュミレーター</p>
     </div>
 
-    <div className="information" data-aos="fade-up">
+    <div className="information" data-aos="fade-up" data-aos-delay="1500">
       <p>当shopではお客様に寄り添った作品作りに努めています</p>
       <p>名入れアイテムは全て文言変更可能でございます</p>
       <br></br>
