@@ -25,7 +25,7 @@ const MainContent = () => {
       clickable: true,
   },
     loop: true,
-    speed: 1500,
+    speed: 2500,
     autoplay: {
       delay: 1500,
       disableOnInteraction: false
@@ -90,25 +90,24 @@ const MainContent = () => {
       </Swiper>
     
    
-    <div className="title_first" data-aos="fade-left" data-aos-delay="2500">
-      <p>-シンプルモダン好きな方へ贈る</p>
-    </div>
-    <div className="title_second" data-aos="fade-left" data-aos-delay="3000">
-      <p>　　ワンランク上の名入れアイテム-</p>
+    <div className="title_first" data-aos="fade-up" data-aos-delay="2500">
+      <p>-シンプルモダン好きな方へ贈る
+        <br></br>
+        　　ワンランク上の名入れアイテム-</p>
     </div>
 
-    <div className="customizeoption" data-aos="fade-down" data-aos-delay="2500" >
+    <div className="customizeoption" data-aos="fade-up" data-aos-delay="2500" >
       <img
         src="/customizeoption.svg"
         alt="customize option"
         className="customize_image"
       />
     </div>
-    <div  className="simulate_title" data-aos="fade-down" data-aos-delay="3000">
+    <div  className="simulate_title" data-aos="fade-up" data-aos-delay="3000">
       <p>お見積もりシュミレーター</p>
     </div>
 
-    <div className="information" data-aos="fade-down" data-aos-delay="2500">
+    <div className="information" data-aos="fade-up" data-aos-delay="2500">
       <p>当shopではお客様に寄り添った作品作りに努めています</p>
       <p>名入れアイテムは全て文言変更可能でございます</p>
       <br></br>
@@ -120,6 +119,8 @@ const MainContent = () => {
       <p>ご自由にカスタマイズしお見積もり</p>
       <p>いただけますので是非ご活用くださいませ</p>
     </div>
+
+    <div className="border_section"></div>
 
     <div className="estimate_section">
       <EstimateCalculator />

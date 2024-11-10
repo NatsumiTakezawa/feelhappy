@@ -26,7 +26,7 @@ body {
     }
     
 
-
+  /*ファーストビュー*/
     .start {
       position: fixed;
       top: 0;
@@ -38,6 +38,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      transform-origin: right;
     }
     
     .start p {
@@ -66,8 +67,24 @@ body {
     .start.hidden {
       opacity: 0;
       transition: opacity 1s;
+      display: none;
     }
 
+    .start.fading {
+      animation: slideOutToRight 1s ease-in forwards;
+    }
+    
+    /*背景のスライド*/
+    @keyframes slideOutToRight {
+      0% {
+        transform: scaleX(1);
+      }
+      100% {
+        transform: scaleX(0);
+      }
+    }
+
+    /*フォントのアニメーション*/
     .ml12 {
       /* font-weight: 200;
       font-size: 1.8em;
@@ -127,21 +144,9 @@ body {
   opacity: 0.8;
   width: 62%;
   font-size: 3vw;
-  transform: skewX(-45deg);
 }
 
-.title_second{
-  position: absolute;
-  margin-top: -16vw;
-  z-index: 1;
-  padding: 0.3em 1em;
-  color: #2c2c2f;
-  background: #fff;/*背景色*/
-  opacity: 0.8;
-  width: 62%;
-  font-size: 3vw;
-  transform: skewX(-45deg);
-}
+
 
 .customizeoption{
   display: flex;
@@ -171,6 +176,16 @@ body {
   font-size: 3vw;
   line-height: 1.6em
 }
+
+.border_section{
+  position:absolute;/*絶対位置指定*/
+  left:50%;/*横位置の指定*/
+  top:94%;/*縦位置の指定*/
+  background:#4c413aff;/*線の色指定*/
+  width:0.1px;/*線の幅指定*/
+  height:5%;/*線の高さ指定*/
+  }
+
 
 .estimate_section{
   justify-content: center; /* 水平方向の中央揃え */

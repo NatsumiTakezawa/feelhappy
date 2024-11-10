@@ -10,17 +10,26 @@ const Start = () => {
   const elementRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isStartVisible, setIsStartVisible] = useState(true);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
     // ロゴのフェードイン
     const fadeInTimeout = setTimeout(() => {
       setIsVisible(true);
-    }, 500);
+    }, 100);
 
     // 背景含めたフェードアウト
     const fadeOutTimeout = setTimeout(() => {
       setIsStartVisible(false);
-    }, 3500);
+    }, 8000);
+
+    const fadeStartTimeout = setTimeout(() => {
+        setIsFading(true);
+      }, 3200);
+  
+      const hideTimeout = setTimeout(() => {
+        setIsStartVisible(false);
+      }, 4500); // アニメーション完了後に非表示
 
 
     // テキストを文字ごとに分割してspanで囲む
@@ -54,6 +63,8 @@ const Start = () => {
     return () => {
       clearTimeout(fadeInTimeout);
       clearTimeout(fadeOutTimeout);
+      clearTimeout(fadeStartTimeout);
+      clearTimeout(hideTimeout);
     };
 
 
@@ -64,7 +75,7 @@ const Start = () => {
 
   return (
     <header>
-      <div className={`start ${isStartVisible ? 'visible' : 'hidden'}`}>
+      <div className={`start ${isFading ? 'fading' : ''} ${isStartVisible ? 'visible' : 'hidden'}`}>
         <p className={`ml12 ${isVisible ? 'visible' : 'hidden'}`} ref={elementRef}>Feel Happy</p>
       </div>
     </header>
