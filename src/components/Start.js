@@ -20,7 +20,7 @@ const Start = () => {
     // 背景含めたフェードアウト
     const fadeOutTimeout = setTimeout(() => {
       setIsStartVisible(false);
-    }, 4500);
+    }, 3500);
 
 
     // テキストを文字ごとに分割してspanで囲む
