@@ -25,11 +25,11 @@ const Start = () => {
 
     const fadeStartTimeout = setTimeout(() => {
         setIsFading(true);
-      }, 3200);
+      }, 3080);
   
       const hideTimeout = setTimeout(() => {
         setIsStartVisible(false);
-      }, 4500); // アニメーション完了後に非表示
+      }, 4400); // アニメーション完了後に非表示
 
 
     // テキストを文字ごとに分割してspanで囲む
@@ -39,7 +39,7 @@ const Start = () => {
         "<span class='letter'>$&</span>"
     );
 
-    // アニメーション設定
+    // ショップタイトルアニメーション設定
     anime.timeline({loop: false})
         .add({
         targets: '.ml12 .letter',

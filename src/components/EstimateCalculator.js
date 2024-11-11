@@ -38,7 +38,7 @@ const EstimateCalculator = () => {
     const MAX_AREA = 1247.4;
     const BASE_AREA = 310.8;
     const BASE_PRICE = 5000;
-    const PRICE_INCREMENT = 1000;
+    const PRICE_INCREMENT = 500;
     const AREA_INCREMENT = 100;
 
 
@@ -211,136 +211,145 @@ const generatePDF = () => {
 
 
   return (
-    <div className="w-full max-w-md mx-auto p-6">
-      <header>
-        加工サイズ
-      </header>
-      <div>※数値は半角でご入力ください</div>
-      <div className="space-y-4">
-        <div>
-          <div>【MAX 42cm】</div>
-          <Label htmlFor="length">長辺 </Label>
-          <Input
-            id="length"
-            type="number"
-            value={length}
-            onChange={(e) => handleInputChange(setLength, e.target.value)}
-            placeholder="長辺を入力 (最大42cm)"
-            className="mt-1"
-          />
-          (cm)
-          {errors.length &&  <p style={{ color: 'red' }}>{errors.length}</p>}
+    <div className="estimate_section">
+      <div className="estimate_content">
+        <div className="size_section">
+        <div className="size_titlecontent">
+          <h1 className="size_title">加工サイズ</h1>
+          <p>※数値は半角でご入力ください</p>
         </div>
-
-        <div>
-          <div>【MAX 29.7cm】</div>
-          <Label htmlFor="width">短辺 </Label>
-          <Input
-            id="width"
-            type="number"
-            value={width}
-            onChange={(e) => handleInputChange(setWidth, e.target.value)}
-            placeholder="短辺を入力 (最大29.7cm)"
-            className="mt-1"
-          />
-          (cm)
-          {errors.width && <p style={{ color: 'red' }}>{errors.width}</p>}
-          {errors.general && <p style={{ color: 'red' }}>{errors.general}</p>}
-        </div>
-
-      <div className="mb-2">料金体系:</div>
-      <ul className="list-disc ml-4">
-        <li>310.8cm²まで: ¥5,000（一律）</li>
-        <li>以降100cm²ごとに: ¥1,000追加</li>
-        <li>最大サイズ: 1,247.4cm²</li>
-      </ul>
-
-      <div>
-        <h1>イラスト追加</h1>
-          <p>※数値を入力する際は半角でご入力ください</p>
-          <p>※濃淡のあるデザイン不可</p>
-          <div>
-            <Label htmlFor="illustrationLength">長辺 </Label>
-            <input
+          <div className="longsize_section">
+            <p>【MAX 42cm】</p>
+            <Label htmlFor="length">長辺 </Label>
+            <Input
+              id="length"
               type="number"
-              value={illustrationLength}
-              onChange={(e) => handleInputChange(setIllustrationLength, e.target.value)}
-              placeholder="長辺を入力"
+              value={length}
+              onChange={(e) => handleInputChange(setLength, e.target.value)}
+              placeholder="長辺を入力 (最大42cm)"
               className="mt-1"
-            />(cm)
-          </div>
-          {errors.illustrationLength &&  <p style={{ color: 'red' }}>{errors.illustrationLength}</p>}
-
-          <div>
-            <Label htmlFor="illustrationWidth">短辺 </Label>
-            <input
-              type="number"
-              value={illustrationWidth}
-              onChange={(e) => handleInputChange(setIllustrationWidth, e.target.value)}
-              placeholder="短辺を入力"
-              className="mt-1"
-            />(cm)
-          </div>
-          {errors.illustrationWidth && <p style={{ color: 'red' }}>{errors.illustrationWidth}</p>}
-          {errors.illustrationgeneral && <p style={{ color: 'red' }}>{errors.illustrationgeneral}</p>}
-          {errors.illustration && <p style={{ color: 'red' }}>{errors.illustration}</p>}
-
-          <p>※イラストが複数、もしくは広範囲に及ぶものは、
-          模様の端から端までを測って数値をご入力ください</p>
-
-          <p>例１</p><p>模様が複数存在</p>
-          <img src="./exm1.svg"></img>
-          <p>例２</p><p>模様が広範囲に及ぶ</p>
-          <img src="./exm2.svg"></img>
-      </div>
-
-
-      <div>
-        <label>
-          <input 
-            type="checkbox"
-            checked={fontChange}
-            onChange={(e) => setFontChange(e.target.checked)}
             />
-          フォント変更 +1000円
-        </label>
-        <p>※1フォント毎の料金です</p>
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox" 
-            checked={materialChange}
-            onChange={(e) => setMaterialChange(e.target.checked)} 
-          />
-          素材変更 +2000円
-        </label>
-          <p>透明アクリル</p>
-          <p>乳白色アクリル</p>
-          <p>ホワイトアクリル</p>
-          <p>ブラックアクリル</p>         
-          <p>ゴールドアクリル</p>
-          <p>シルバーアクリル</p>
-      </div>
-
-
-      <button onClick={calculatePrice}>見積もりする</button>
-
-
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <div className="text-xl mt-2">
-          {price > 0 && <h3>合計金額: {price}円</h3>}
+            (cm)
+            {errors.length &&  <p style={{ color: 'red' }}>{errors.length}</p>}
           </div>
+
+          <div className="shortsize_section">
+            <p>【MAX 29.7cm】</p>
+            <Label htmlFor="width">短辺 </Label>
+            <Input
+              id="width"
+              type="number"
+              value={width}
+              onChange={(e) => handleInputChange(setWidth, e.target.value)}
+              placeholder="短辺を入力 (最大29.7cm)"
+              className="mt-1"
+            />
+            (cm)
+            {errors.width && <p style={{ color: 'red' }}>{errors.width}</p>}
+            {errors.general && <p style={{ color: 'red' }}>{errors.general}</p>}
+          </div>
+
+          <div className="charge_section">
+            <p>※310.8cm²までは ¥5,000（一律）</p>
+            <p>※以降100cm²ごとに ¥1,000追加</p>
+            <p>※最大加工面積1,247.4cm²</p>
+          </div>
+      </div>
+
+          <div className="illustration_section">
+            <h1 className="illustration_title">イラスト追加</h1>
+              <p>※数値は半角でご入力ください</p>
+              <div className="longillustration_section">
+                <Label htmlFor="illustrationLength">長辺 </Label>
+                <input
+                  type="number"
+                  value={illustrationLength}
+                  onChange={(e) => handleInputChange(setIllustrationLength, e.target.value)}
+                  placeholder="長辺を入力"
+                  className="mt-1"
+                />(cm)
+              </div>
+              {errors.illustrationLength &&  <p style={{ color: 'red' }}>{errors.illustrationLength}</p>}
+
+              <div className="shortillustration_section">
+                <Label htmlFor="illustrationWidth">短辺 </Label>
+                <input
+                  type="number"
+                  value={illustrationWidth}
+                  onChange={(e) => handleInputChange(setIllustrationWidth, e.target.value)}
+                  placeholder="短辺を入力"
+                  className="mt-1"
+                />(cm)
+              </div>
+              {errors.illustrationWidth && <p style={{ color: 'red' }}>{errors.illustrationWidth}</p>}
+              {errors.illustrationgeneral && <p style={{ color: 'red' }}>{errors.illustrationgeneral}</p>}
+              {errors.illustration && <p style={{ color: 'red' }}>{errors.illustration}</p>}
+
+            <div className="precautions">
+              <p>※イラストが複数、もしくは広範囲に及ぶものは、
+              模様の端から端までを測って数値をご入力ください</p>
+              <p>※濃淡のあるデザイン不可</p>
+              <p>※イラストの長辺・短辺の長さは加工サイズに収まるようにしてください</p>
+            </div>
+
+            <div className="precautions_example">
+              <p>例１</p><p>模様が複数存在</p>
+              <img src="./exm1.svg"></img>
+              <p>例２</p><p>模様が広範囲に及ぶ</p>
+              <img src="./exm2.svg"></img>
+            </div>
+
+          </div>
+
+
+        <div className="font_section">
+          <label>
+            <input 
+              type="checkbox"
+              checked={fontChange}
+              onChange={(e) => setFontChange(e.target.checked)}
+              />
+            フォント変更 +1000円
+          </label>
+          <p>※1フォント毎の料金です</p>
         </div>
 
-        
-          <Button 
-            onClick={generatePDF}
-            className="w-full mt-4"
-          >
-            見積書をPDF出力
-          </Button>
-        
+        <div className='material_section'>
+          <label>
+            <input
+              type="checkbox" 
+              checked={materialChange}
+              onChange={(e) => setMaterialChange(e.target.checked)} 
+            />
+            素材変更 +2000円
+          </label>
+            <p>透明アクリル</p>
+            <p>乳白色アクリル</p>
+            <p>ホワイトアクリル</p>
+            <p>ブラックアクリル</p>         
+            <p>ゴールドアクリル</p>
+            <p>シルバーアクリル</p>
+        </div>
+
+        <div className='calculate_button'>
+          <button onClick={calculatePrice}>見積もりする</button>
+        </div>
+
+          <div className="total_price">
+            <div className="tprice_section">
+            {price > 0 && <h3>合計金額: {price}円</h3>}
+            </div>
+          </div>
+
+          <div className='pdf_section'>
+            <Button 
+              onClick={generatePDF}
+              className="pdf_button"
+            >
+              見積書をPDF出力
+            </Button>
+          </div>
+
       </div>
     </div>
   );

@@ -120,7 +120,9 @@ const MainContent = () => {
       <p>いただけますので是非ご活用くださいませ</p>
     </div>
 
-    <div className="border_section"></div>
+    <div className="border_content">
+      <div className="border_section"></div>
+    </div>
 
     <div className="estimate_section">
       <EstimateCalculator />

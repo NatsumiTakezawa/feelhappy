@@ -71,7 +71,7 @@ body {
     }
 
     .start.fading {
-      animation: slideOutToRight 1s ease-in forwards;
+      animation: slideOutToRight 0.8s ease-in forwards;
     }
     
     /*背景のスライド*/
@@ -177,6 +177,11 @@ body {
   line-height: 1.6em
 }
 
+.border_content{
+  /* position : relative; */
+}
+
+
 .border_section{
   position:absolute;/*絶対位置指定*/
   left:50%;/*横位置の指定*/
@@ -190,9 +195,44 @@ body {
 .estimate_section{
   justify-content: center; /* 水平方向の中央揃え */
   align-items: center;
-  margin: 10%;
+  margin: 7%;
 }
 
+.size_section{
+  margin-top: 6%;
+  margin-bottom: 5%;
+}
+
+.size_title{
+ 
+}
+
+.size_titlecontent{
+  display: flex;
+  align-items: flex-end;
+  
+}
+
+.size_titlecontent h1{
+  margin-right: 10%;
+  font-size: 4vw;
+ }
+
+
+.size_titlecontent p{
+ margin: 1%;
+ font-size: 2vw;
+}
+
+.size_titlecontent::before{
+  content:"";
+  position:absolute;/*絶対位置指定*/
+  left:12%;/*横位置の指定*/
+  top:155%;/*縦位置の指定*/
+  background:#4c413aff;/*線の色指定*/
+  width:75%;/*線の幅指定*/
+  height:0.1px;/*線の高さ指定*/
+  }
 
 footer {
   text-align: center;
