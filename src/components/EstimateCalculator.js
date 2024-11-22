@@ -216,6 +216,7 @@ const generatePDF = () => {
         <div className="size_section">
         <div className="size_titlecontent">
           <h1 className="size_title">加工サイズ</h1>
+          <img src="./required.svg"/>
           <p>※数値は半角でご入力ください</p>
         </div>
           <div className="longsize_section">
@@ -229,7 +230,7 @@ const generatePDF = () => {
               placeholder="長辺を入力 (最大42cm)"
               className="mt-1"
             />
-            (cm)
+            cm
             {errors.length &&  <p style={{ color: 'red' }}>{errors.length}</p>}
           </div>
 
@@ -244,14 +245,14 @@ const generatePDF = () => {
               placeholder="短辺を入力 (最大29.7cm)"
               className="mt-1"
             />
-            (cm)
+            cm
             {errors.width && <p style={{ color: 'red' }}>{errors.width}</p>}
             {errors.general && <p style={{ color: 'red' }}>{errors.general}</p>}
           </div>
 
           <div className="charge_section">
             <p>※310.8cm²までは ¥5,000（一律）</p>
-            <p>※以降100cm²ごとに ¥1,000追加</p>
+            <p>※以降100cm²ごとに ¥500追加</p>
             <p>※最大加工面積1,247.4cm²</p>
           </div>
       </div>
@@ -267,7 +268,7 @@ const generatePDF = () => {
                   onChange={(e) => handleInputChange(setIllustrationLength, e.target.value)}
                   placeholder="長辺を入力"
                   className="mt-1"
-                />(cm)
+                />cm
               </div>
               {errors.illustrationLength &&  <p style={{ color: 'red' }}>{errors.illustrationLength}</p>}
 
@@ -279,7 +280,7 @@ const generatePDF = () => {
                   onChange={(e) => handleInputChange(setIllustrationWidth, e.target.value)}
                   placeholder="短辺を入力"
                   className="mt-1"
-                />(cm)
+                />cm
               </div>
               {errors.illustrationWidth && <p style={{ color: 'red' }}>{errors.illustrationWidth}</p>}
               {errors.illustrationgeneral && <p style={{ color: 'red' }}>{errors.illustrationgeneral}</p>}
@@ -288,29 +289,40 @@ const generatePDF = () => {
             <div className="precautions">
               <p>※イラストが複数、もしくは広範囲に及ぶものは、
               模様の端から端までを測って数値をご入力ください</p>
-              <p>※濃淡のあるデザイン不可</p>
-              <p>※イラストの長辺・短辺の長さは加工サイズに収まるようにしてください</p>
             </div>
 
             <div className="precautions_example">
               <p>例１</p><p>模様が複数存在</p>
-              <img src="./exm1.svg"></img>
+              <img src="./exm1.svg"/>
               <p>例２</p><p>模様が広範囲に及ぶ</p>
-              <img src="./exm2.svg"></img>
+              <img src="./exm2.svg"/>
             </div>
-
+            <h1>イラスト追加のご注意事項</h1>
+            <p>※濃淡のあるデザイン不可<br></br>
+              ※イラストの長辺・短辺の長さは加工サイズに収まるようにしてください<br></br>
+              ※細かすぎたり小さすぎるデザインは加工機の都合上<br></br>
+              お受けできない可能性もございます<br></br>
+              ※デザイン内容によってはお見積もり金額が前後するため<br></br>
+              あくまで参考程度にお考え下さい<br></br>
+              ※イラストデータはお客様ご自身でご用意ください。<br></br>
+              こちらでデザインは製作いたしかねます<br></br>
+              ※イラストデータをIllustratorでご用意いただける場合、<br></br>
+              お見積もり金額より安くなる場合もございます<br></br>
+              ※手書き文字はイラストの対象にはなりません。<br></br>
+              フォント選択の"サンプル写真以外のフォントを希望する"を<br></br>
+              ご選択ください</p>
           </div>
 
 
         <div className="font_section">
-          <label>
+          <h1>フォント選択</h1>
+          <img src="./required.svg"/>
             <input 
               type="checkbox"
               checked={fontChange}
               onChange={(e) => setFontChange(e.target.checked)}
               />
-            フォント変更 +1000円
-          </label>
+            <label>以下のサンプル写真内のフォント…無料</label>
           <p>※1フォント毎の料金です</p>
         </div>
 
